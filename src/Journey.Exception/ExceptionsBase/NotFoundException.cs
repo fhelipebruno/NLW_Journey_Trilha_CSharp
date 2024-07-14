@@ -1,17 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Net;
 
 namespace Journey.Exception.ExceptionsBase
 {
     public class NotFoundException : JourneyException
     {
-        public NotFoundException(string mensagem) : base(mensagem)
+        public NotFoundException(string message) : base(message)
         {
             
+        }
+
+        public override IList<string> GetErrorMessages()
+        {
+            return [Message];
         }
 
         public override HttpStatusCode GetStatusCode()
