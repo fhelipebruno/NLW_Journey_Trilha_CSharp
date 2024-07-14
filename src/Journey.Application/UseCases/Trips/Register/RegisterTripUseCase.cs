@@ -37,17 +37,17 @@ namespace Journey.Application.UseCases.Trips.Register
         {
             if (String.IsNullOrWhiteSpace(request.Name))
             {
-                throw new JourneyException(ResourceErrorMessages.NOME_INVALIDO_NAO_INFORMADO);
+                throw new ErrorOnValidationException(ResourceErrorMessages.NOME_INVALIDO_NAO_INFORMADO);
             }
 
             if(request.StartDate < DateTime.UtcNow)
             {
-                throw new JourneyException(ResourceErrorMessages.DATA_INICIO_INVALIDA);
+                throw new ErrorOnValidationException(ResourceErrorMessages.DATA_INICIO_INVALIDA);
             }
 
             if (request.EndDate < request.StartDate)
             {
-                throw new JourneyException(ResourceErrorMessages.DATA_FIM_MENOR_INICIO);
+                throw new ErrorOnValidationException(ResourceErrorMessages.DATA_FIM_MENOR_INICIO);
             }
         }
     }

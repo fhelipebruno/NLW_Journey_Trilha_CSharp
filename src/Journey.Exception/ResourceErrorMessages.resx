@@ -123,6 +123,9 @@
   <data name="DATA_INICIO_INVALIDA" xml:space="preserve">
     <value>Data de início da viagem não pode ser menor que a data atual.</value>
   </data>
+  <data name="ERRO_DESCONHECIDO" xml:space="preserve">
+    <value>"Erro desconhecido"</value>
+  </data>
   <data name="NOME_INVALIDO_NAO_INFORMADO" xml:space="preserve">
     <value>Nome inválido ou não informado.</value>
   </data>

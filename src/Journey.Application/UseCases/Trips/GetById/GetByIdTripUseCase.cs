@@ -18,7 +18,7 @@ namespace Journey.Application.UseCases.Trips.GetById
 
             if(entity is null)
             {
-                throw new JourneyException(ResourceErrorMessages.VIAGEM_NAO_ENCONTRADA);
+                throw new NotFoundException(ResourceErrorMessages.VIAGEM_NAO_ENCONTRADA);
             }
 
             return new ResponseTripJson
