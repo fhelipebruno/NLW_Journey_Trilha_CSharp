@@ -16,9 +16,9 @@ namespace Journey.Api.Controllers
             {
                 var useCase = new RegisterTripUseCase();
 
-                useCase.Execute(request);
+                var response = useCase.Execute(request);
 
-                return Created();
+                return Created(String.Empty,response);
             }
             catch(JourneyException ex) 
             {
