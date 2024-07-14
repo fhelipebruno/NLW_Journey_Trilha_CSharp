@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ATIVIDADE_NAO_ENCONTRADA" xml:space="preserve">
+    <value>Atividade não encontrada.</value>
+  </data>
   <data name="DATA_ATIVIDADE_FORA_PERIODO_VIAGEM" xml:space="preserve">
     <value>Data da atividade está fora do período da viagem.</value>
   </data>

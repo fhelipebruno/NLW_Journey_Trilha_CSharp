@@ -61,6 +61,15 @@ namespace Journey.Exception {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Atividade não encontrada..
+        /// </summary>
+        public static string ATIVIDADE_NAO_ENCONTRADA {
+            get {
+                return ResourceManager.GetString("ATIVIDADE_NAO_ENCONTRADA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Data da atividade está fora do período da viagem..
         /// </summary>
         public static string DATA_ATIVIDADE_FORA_PERIODO_VIAGEM {
