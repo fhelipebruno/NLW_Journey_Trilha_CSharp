@@ -14,8 +14,8 @@ namespace Journey.Api.Controllers
     {
         [HttpPost]
         [ProducesResponseType(typeof(ResponseShortTripJson), StatusCodes.Status201Created)]
-        [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(typeof(ResponseErrosJson), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ResponseErrosJson), StatusCodes.Status500InternalServerError)]
         public IActionResult Register([FromBody] RequestRegisterTripJson request)
         {
             var useCase = new RegisterTripUseCase();
@@ -27,8 +27,8 @@ namespace Journey.Api.Controllers
         [HttpGet]
         [Route("GetAll")]
         [ProducesResponseType(typeof(ResponseTripsJson), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(typeof(ResponseErrosJson), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ResponseErrosJson), StatusCodes.Status500InternalServerError)]
         public IActionResult GetAll()
         {
             var useCase = new GetAllTripUseCase();
@@ -40,9 +40,9 @@ namespace Journey.Api.Controllers
         [HttpGet]
         [Route("GetById/{id}")]
         [ProducesResponseType(typeof(ResponseTripJson), StatusCodes.Status200OK)]
-        [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
-        [ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(typeof(ResponseErrosJson), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ResponseErrosJson), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(ResponseErrosJson), StatusCodes.Status500InternalServerError)]
         public IActionResult GetById([FromRoute] Guid id)
         {
             var useCase = new GetByIdTripUseCase();
@@ -55,9 +55,9 @@ namespace Journey.Api.Controllers
         [HttpDelete]
         [Route("{id}")]
         [ProducesResponseType(typeof(ResponseTripJson), StatusCodes.Status204NoContent)]
-        [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
-        [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
-        [ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
+        [ProducesResponseType(typeof(ResponseErrosJson), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ResponseErrosJson), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(ResponseErrosJson), StatusCodes.Status500InternalServerError)]
         public IActionResult DeleteById([FromRoute] Guid id)
         {
             var useCase = new DeleteByIdTripUseCase();
