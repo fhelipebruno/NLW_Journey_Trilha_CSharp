@@ -1,4 +1,5 @@
-﻿using Journey.Application.UseCases.Trips.GetAll;
+﻿using Journey.Application.UseCases.Activities.Register;
+using Journey.Application.UseCases.Trips.GetAll;
 using Journey.Application.UseCases.Trips.GetById;
 using Journey.Application.UseCases.Trips.Register;
 using Journey.Communication.Requests;
@@ -65,6 +66,20 @@ namespace Journey.Api.Controllers
 
             return NoContent();
 
+        }
+
+        [HttpPost]
+        [Route("{TripId}/activity")]
+        [ProducesResponseType(typeof(ResponseActivityJson), StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(ResponseErrosJson), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(ResponseErrosJson), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(ResponseErrosJson), StatusCodes.Status500InternalServerError)]
+        public IActionResult RegisterActivity([FromRoute] Guid TripId, [FromBody] RequestRegisterActivityJson request)
+        {
+            var useCase = new RegisterActivityUseCase();
+            var response = useCase.Execute(TripId, request);
+
+            return Created(string.Empty, response);
         }
     }
 }

@@ -61,6 +61,15 @@ namespace Journey.Exception {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Data da atividade está fora do período da viagem..
+        /// </summary>
+        public static string DATA_ATIVIDADE_FORA_PERIODO_VIAGEM {
+            get {
+                return ResourceManager.GetString("DATA_ATIVIDADE_FORA_PERIODO_VIAGEM", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Data de fim da viagem não pode ser menor que a data de início..
         /// </summary>
         public static string DATA_FIM_MENOR_INICIO {
