@@ -51,5 +51,20 @@ namespace Journey.Api.Controllers
             return Ok(response);
             
         }
+
+        [HttpDelete]
+        [Route("{id}")]
+        [ProducesResponseType(typeof(ResponseTripJson), StatusCodes.Status204NoContent)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
+        public IActionResult DeleteById([FromRoute] Guid id)
+        {
+            var useCase = new DeleteByIdTripUseCase();
+            useCase.Execute(id);
+
+            return NoContent();
+
+        }
     }
 }
