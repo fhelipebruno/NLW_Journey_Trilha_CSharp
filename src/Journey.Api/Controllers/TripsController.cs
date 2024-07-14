@@ -1,6 +1,8 @@
 ﻿using Journey.Application.UseCases.Trips.GetAll;
+using Journey.Application.UseCases.Trips.GetById;
 using Journey.Application.UseCases.Trips.Register;
 using Journey.Communication.Requests;
+using Journey.Communication.Responses;
 using Journey.Exception.ExceptionsBase;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,6 +13,9 @@ namespace Journey.Api.Controllers
     public class TripsController : ControllerBase
     {
         [HttpPost]
+        [ProducesResponseType(typeof(ResponseShortTripJson), StatusCodes.Status201Created)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
         public IActionResult Register([FromBody] RequestRegisterTripJson request)
         {
             try
@@ -19,9 +24,9 @@ namespace Journey.Api.Controllers
 
                 var response = useCase.Execute(request);
 
-                return Created(String.Empty,response);
+                return Created(String.Empty, response);
             }
-            catch(JourneyException ex) 
+            catch (JourneyException ex)
             {
                 Console.WriteLine("Ocorreu erro ao processar a requisição: " + ex.Message);
                 return BadRequest(ex.Message);
@@ -33,6 +38,10 @@ namespace Journey.Api.Controllers
         }
 
         [HttpGet]
+        [Route("GetAll")]
+        [ProducesResponseType(typeof(ResponseTripsJson), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
         public IActionResult GetAll()
         {
             try
@@ -50,7 +59,33 @@ namespace Journey.Api.Controllers
             catch
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, "Erro desconhecido");
-            }            
+            }
+        }
+
+        [HttpGet]
+        [Route("GetById/{id}")]
+        [ProducesResponseType(typeof(ResponseTripJson), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status404NotFound)]
+        [ProducesResponseType(typeof(string), StatusCodes.Status500InternalServerError)]
+        public IActionResult GetById([FromRoute] Guid id)
+        {
+            try
+            {
+                var useCase = new GetByIdTripUseCase();
+                var response = useCase.Execute(id);
+
+                return Ok(response);
+            }
+            catch (JourneyException ex)
+            {
+                Console.WriteLine("Ocorreu erro ao processar a requisição: " + ex.Message);
+                return NotFound(ex.Message);
+            }
+            catch
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, "Erro desconhecido");
+            }
         }
     }
 }

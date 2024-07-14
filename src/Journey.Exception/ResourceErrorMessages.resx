@@ -126,4 +126,7 @@
   <data name="NOME_INVALIDO_NAO_INFORMADO" xml:space="preserve">
     <value>Nome inválido ou não informado.</value>
   </data>
+  <data name="VIAGEM_NAO_ENCONTRADA" xml:space="preserve">
+    <value>Viagem não encontrada.</value>
+  </data>
 </root>
