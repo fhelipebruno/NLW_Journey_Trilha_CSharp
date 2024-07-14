@@ -26,6 +26,7 @@ namespace Journey.Application.UseCases.Trips.Register
 
             return new ResponseShortTripJson
             {
+                Id = entity.Id,
                 Name = entity.Name,
                 StartDate = entity.StartDate,
                 EndDate = entity.EndDate
