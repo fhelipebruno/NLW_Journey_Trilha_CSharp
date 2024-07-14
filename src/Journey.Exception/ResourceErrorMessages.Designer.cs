@@ -79,6 +79,15 @@ namespace Journey.Exception {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to &quot;Erro desconhecido&quot;.
+        /// </summary>
+        public static string ERRO_DESCONHECIDO {
+            get {
+                return ResourceManager.GetString("ERRO_DESCONHECIDO", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Nome inválido ou não informado..
         /// </summary>
         public static string NOME_INVALIDO_NAO_INFORMADO {
